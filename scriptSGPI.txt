@@ -1,0 +1,500 @@
+USE [master]
+GO
+/****** Object:  Database [SGPIDB]    Script Date: 18/10/2022 21:06:58 ******/
+CREATE DATABASE [SGPIDB]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'SGPIDB', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\SGPIDB.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'SGPIDB_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\SGPIDB.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+ WITH CATALOG_COLLATION = DATABASE_DEFAULT
+GO
+ALTER DATABASE [SGPIDB] SET COMPATIBILITY_LEVEL = 150
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [SGPIDB].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [SGPIDB] SET ANSI_NULL_DEFAULT ON 
+GO
+ALTER DATABASE [SGPIDB] SET ANSI_NULLS ON 
+GO
+ALTER DATABASE [SGPIDB] SET ANSI_PADDING ON 
+GO
+ALTER DATABASE [SGPIDB] SET ANSI_WARNINGS ON 
+GO
+ALTER DATABASE [SGPIDB] SET ARITHABORT ON 
+GO
+ALTER DATABASE [SGPIDB] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [SGPIDB] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [SGPIDB] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [SGPIDB] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [SGPIDB] SET CURSOR_DEFAULT  LOCAL 
+GO
+ALTER DATABASE [SGPIDB] SET CONCAT_NULL_YIELDS_NULL ON 
+GO
+ALTER DATABASE [SGPIDB] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [SGPIDB] SET QUOTED_IDENTIFIER ON 
+GO
+ALTER DATABASE [SGPIDB] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [SGPIDB] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [SGPIDB] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [SGPIDB] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [SGPIDB] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [SGPIDB] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [SGPIDB] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [SGPIDB] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [SGPIDB] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [SGPIDB] SET RECOVERY FULL 
+GO
+ALTER DATABASE [SGPIDB] SET  MULTI_USER 
+GO
+ALTER DATABASE [SGPIDB] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [SGPIDB] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [SGPIDB] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [SGPIDB] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [SGPIDB] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [SGPIDB] SET ACCELERATED_DATABASE_RECOVERY = OFF  
+GO
+ALTER DATABASE [SGPIDB] SET QUERY_STORE = OFF
+GO
+USE [SGPIDB]
+GO
+/****** Object:  Table [dbo].[Asignatura]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Asignatura](
+	[IdAsignatura] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](100) NULL,
+	[Codigo] [varchar](150) NULL,
+	[IdPrograma] [int] NULL,
+	[Nivel] [int] NULL,
+	[Creditos] [int] NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdAsignatura] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Documento]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Documento](
+	[IdDoc] [int] IDENTITY(1,1) NOT NULL,
+	[TipoDocumento] [varchar](30) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdDoc] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Entrevista]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Entrevista](
+	[IdEntrevista] [int] IDENTITY(1,1) NOT NULL,
+	[IdUsuario] [int] NOT NULL,
+	[IdEstudiante] [int] NOT NULL,
+	[Fecha] [date] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdEntrevista] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Estudiante]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Estudiante](
+	[IdEstudiante] [int] IDENTITY(1,1) NOT NULL,
+	[Archivo] [varchar](500) NOT NULL,
+	[IdPago] [int] NOT NULL,
+	[IdUsuario] [int] NOT NULL,
+	[Egreado] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdEstudiante] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Genero]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Genero](
+	[IdGenero] [int] IDENTITY(1,1) NOT NULL,
+	[Genero] [varchar](30) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdGenero] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Homologacion]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Homologacion](
+	[IdHomologacion] [int] IDENTITY(1,1) NOT NULL,
+	[IdEstudiante] [int] NOT NULL,
+	[IdPrograma] [int] NOT NULL,
+	[IdTipoHomologacion] [int] NOT NULL,
+	[PeriodoAcademico] [varchar](30) NOT NULL,
+	[IdAsignatura] [int] NOT NULL,
+	[CodigoHomologacion] [varchar](30) NOT NULL,
+	[NomAsigHomologacion] [varchar](30) NOT NULL,
+	[CreditosHomologacion] [int] NOT NULL,
+	[Nota] [float] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdHomologacion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Pagos]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Pagos](
+	[IdPago] [int] IDENTITY(1,1) NOT NULL,
+	[ValorPago] [int] NOT NULL,
+	[Fecha] [date] NOT NULL,
+	[Estado] [bit] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdPago] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Programa]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Programa](
+	[IdPrograma] [int] IDENTITY(1,1) NOT NULL,
+	[Programa] [varchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdPrograma] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Programacion]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Programacion](
+	[IdProgramacion] [int] IDENTITY(1,1) NOT NULL,
+	[PeriodoAcademico] [varchar](30) NOT NULL,
+	[IdPrograma] [int] NOT NULL,
+	[FechaProgramacion] [datetime] NOT NULL,
+	[Sala] [varchar](30) NOT NULL,
+	[IdAsignatura] [int] NOT NULL,
+	[IdUsuario] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdProgramacion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Rol]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Rol](
+	[IdRol] [int] IDENTITY(1,1) NOT NULL,
+	[Rol] [varchar](50) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdRol] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[TipoHomologacion]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[TipoHomologacion](
+	[IdTipoHomologacion] [int] IDENTITY(1,1) NOT NULL,
+	[TipoHomologacion] [varchar](100) NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdTipoHomologacion] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Usuario]    Script Date: 18/10/2022 21:06:58 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Usuario](
+	[IdUsuario] [int] IDENTITY(1,1) NOT NULL,
+	[NumeroDocumento] [varchar](30) NOT NULL,
+	[IdDoc] [int] NOT NULL,
+	[PrimerNombre] [varchar](255) NOT NULL,
+	[SegundoNombre] [varchar](255) NULL,
+	[PrimerApellido] [varchar](255) NOT NULL,
+	[SegundoApellido] [varchar](255) NOT NULL,
+	[IdGenero] [int] NOT NULL,
+	[Email] [varchar](255) NOT NULL,
+	[IdRol] [int] NOT NULL,
+	[Password] [varchar](255) NOT NULL,
+	[IdPrograma] [int] NOT NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[IdUsuario] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Asignatura] ON 
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (1, N'Fundamentos de seguridad de la información', N'1', 1, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (2, N'Mecanismos de protección criptográficos
+', N'2', 1, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (3, N'Seguridad en aplicaciones y bases de datos
+', N'3', 1, 1, 2)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (4, N'Seguridad en redes y sistemas operativos', N'4', 1, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (5, N'Gobernabilidad TI', N'5', 1, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (6, N'Ciencia forense digital', N'6', 1, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (7, N'Aspectos jurídicos delitos informáticos', N'7', 1, 2, 4)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (8, N'Gestión de riesgo', N'8', 1, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (9, N'Seguridad en dispositivos móviles', N'9', 1, 2, 2)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (10, N'Gerencia de proyectos
+', N'10', 1, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (11, N'Gobernabilidad TI', N'11', 2, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (12, N'Gerencia de proyectos TI
+', N'12', 2, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (13, N'Gestión de Requisitos', N'13', 2, 1, 2)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (14, N'Seminario de investigación', N'14', 2, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (15, N'Arquitectura TI', N'15', 2, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (16, N'Gestión del Riesgo', N'16', 2, 2, 2)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (17, N'Gestión del Conocimiento', N'17', 2, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (18, N'Optativa I', N'18', 2, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (19, N'Seminario de trabajo de grado', N'19', 2, 3, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (20, N'Aspectos legales, evaluación y negociación de las TI
+', N'20', 2, 3, 2)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (21, N'Optativa II', N'21', 2, 3, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (22, N'Optativa III
+', N'22', 2, 3, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (23, N'Trabajo de grado', N'23', 2, 4, 4)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (24, N'Optativa IV', N'24', 2, 4, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (25, N'Legislación e Institucionalidad en Medio Ambiente y Gestión de Riesgo', N'25', 3, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (26, N'Teoría General de la Gestión de Riesgo', N'26', 3, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (27, N'Desarrollo Sostenible y Medio Ambiente
+', N'27', 3, 1, 2)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (28, N'SIG Aplicado a la Gestión de Riegos', N'28', 3, 1, 4)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (29, N'Seminario de Investigación I
+', N'29', 3, 1, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (30, N'Diagnóstico y Evaluación de Riesgo', N'30', 3, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (31, N'Ordenamiento, Planificación y Gestión Territorial
+', N'31', 3, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (32, N'Gerencia y Planificación Para la reducción del Riesgo', N'32', 3, 2, 2)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (33, N'Ordenamiento de Cuencas con Enfoque del Riesgo Integral
+', N'33', 3, 2, 4)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (34, N'Optativa I', N'34', 3, 2, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (35, N'Amenazas Hidrometereológicas
+', N'35', 3, 3, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (36, N'Obra Civiles y Biológicas en la Gestión de Desastres', N'36', 3, 3, 4)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (37, N'Semanario de Investigación II
+', N'37', 3, 3, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (38, N'Optativa II', N'38', 3, 3, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (39, N'Trabajo de grado
+', N'39', 3, 4, 3)
+GO
+INSERT [dbo].[Asignatura] ([IdAsignatura], [Nombre], [Codigo], [IdPrograma], [Nivel], [Creditos]) VALUES (40, N'Optativa III', N'40', 3, 4, 2)
+GO
+SET IDENTITY_INSERT [dbo].[Asignatura] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Documento] ON 
+GO
+INSERT [dbo].[Documento] ([IdDoc], [TipoDocumento]) VALUES (1, N'Cedula')
+GO
+INSERT [dbo].[Documento] ([IdDoc], [TipoDocumento]) VALUES (2, N'Tarjeta Identidad')
+GO
+INSERT [dbo].[Documento] ([IdDoc], [TipoDocumento]) VALUES (3, N'Cedula Extranjeria')
+GO
+INSERT [dbo].[Documento] ([IdDoc], [TipoDocumento]) VALUES (4, N'Pasaporte')
+GO
+SET IDENTITY_INSERT [dbo].[Documento] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Genero] ON 
+GO
+INSERT [dbo].[Genero] ([IdGenero], [Genero]) VALUES (1, N'Masculino')
+GO
+INSERT [dbo].[Genero] ([IdGenero], [Genero]) VALUES (2, N'Femenino')
+GO
+SET IDENTITY_INSERT [dbo].[Genero] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Programa] ON 
+GO
+INSERT [dbo].[Programa] ([IdPrograma], [Programa]) VALUES (1, N'Especializacion en seguridad informatica')
+GO
+INSERT [dbo].[Programa] ([IdPrograma], [Programa]) VALUES (2, N'Maestria en Gestion TI')
+GO
+INSERT [dbo].[Programa] ([IdPrograma], [Programa]) VALUES (3, N'Maestría en Gestión del Riesgo y Medio Ambiente')
+GO
+SET IDENTITY_INSERT [dbo].[Programa] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Rol] ON 
+GO
+INSERT [dbo].[Rol] ([IdRol], [Rol]) VALUES (1, N'Administrador')
+GO
+INSERT [dbo].[Rol] ([IdRol], [Rol]) VALUES (2, N'Coordinador')
+GO
+INSERT [dbo].[Rol] ([IdRol], [Rol]) VALUES (3, N'Estudiante')
+GO
+SET IDENTITY_INSERT [dbo].[Rol] OFF
+GO
+ALTER TABLE [dbo].[Asignatura]  WITH CHECK ADD  CONSTRAINT [FK_Asignatura_Programa] FOREIGN KEY([IdPrograma])
+REFERENCES [dbo].[Programa] ([IdPrograma])
+GO
+ALTER TABLE [dbo].[Asignatura] CHECK CONSTRAINT [FK_Asignatura_Programa]
+GO
+ALTER TABLE [dbo].[Entrevista]  WITH CHECK ADD  CONSTRAINT [FK_Entrevista_Estudiante] FOREIGN KEY([IdEstudiante])
+REFERENCES [dbo].[Estudiante] ([IdEstudiante])
+GO
+ALTER TABLE [dbo].[Entrevista] CHECK CONSTRAINT [FK_Entrevista_Estudiante]
+GO
+ALTER TABLE [dbo].[Entrevista]  WITH CHECK ADD  CONSTRAINT [FK_Entrevista_Usuario] FOREIGN KEY([IdUsuario])
+REFERENCES [dbo].[Usuario] ([IdUsuario])
+GO
+ALTER TABLE [dbo].[Entrevista] CHECK CONSTRAINT [FK_Entrevista_Usuario]
+GO
+ALTER TABLE [dbo].[Estudiante]  WITH CHECK ADD  CONSTRAINT [FK_Estudiante_Pagos] FOREIGN KEY([IdPago])
+REFERENCES [dbo].[Pagos] ([IdPago])
+GO
+ALTER TABLE [dbo].[Estudiante] CHECK CONSTRAINT [FK_Estudiante_Pagos]
+GO
+ALTER TABLE [dbo].[Estudiante]  WITH CHECK ADD  CONSTRAINT [FK_Estudiante_Usuario] FOREIGN KEY([IdUsuario])
+REFERENCES [dbo].[Usuario] ([IdUsuario])
+GO
+ALTER TABLE [dbo].[Estudiante] CHECK CONSTRAINT [FK_Estudiante_Usuario]
+GO
+ALTER TABLE [dbo].[Homologacion]  WITH CHECK ADD  CONSTRAINT [FK_Homologacion_Asignatura] FOREIGN KEY([IdAsignatura])
+REFERENCES [dbo].[Asignatura] ([IdAsignatura])
+GO
+ALTER TABLE [dbo].[Homologacion] CHECK CONSTRAINT [FK_Homologacion_Asignatura]
+GO
+ALTER TABLE [dbo].[Homologacion]  WITH CHECK ADD  CONSTRAINT [FK_Homologacion_Estudiante] FOREIGN KEY([IdEstudiante])
+REFERENCES [dbo].[Estudiante] ([IdEstudiante])
+GO
+ALTER TABLE [dbo].[Homologacion] CHECK CONSTRAINT [FK_Homologacion_Estudiante]
+GO
+ALTER TABLE [dbo].[Homologacion]  WITH CHECK ADD  CONSTRAINT [FK_Homologacion_Programa] FOREIGN KEY([IdPrograma])
+REFERENCES [dbo].[Programa] ([IdPrograma])
+GO
+ALTER TABLE [dbo].[Homologacion] CHECK CONSTRAINT [FK_Homologacion_Programa]
+GO
+ALTER TABLE [dbo].[Homologacion]  WITH CHECK ADD  CONSTRAINT [FK_Homologacion_TipoHomologacion] FOREIGN KEY([IdTipoHomologacion])
+REFERENCES [dbo].[TipoHomologacion] ([IdTipoHomologacion])
+GO
+ALTER TABLE [dbo].[Homologacion] CHECK CONSTRAINT [FK_Homologacion_TipoHomologacion]
+GO
+ALTER TABLE [dbo].[Programacion]  WITH CHECK ADD  CONSTRAINT [FK_Programacion_Asignatura] FOREIGN KEY([IdAsignatura])
+REFERENCES [dbo].[Asignatura] ([IdAsignatura])
+GO
+ALTER TABLE [dbo].[Programacion] CHECK CONSTRAINT [FK_Programacion_Asignatura]
+GO
+ALTER TABLE [dbo].[Programacion]  WITH CHECK ADD  CONSTRAINT [FK_Programacion_Usuario] FOREIGN KEY([IdUsuario])
+REFERENCES [dbo].[Usuario] ([IdUsuario])
+GO
+ALTER TABLE [dbo].[Programacion] CHECK CONSTRAINT [FK_Programacion_Usuario]
+GO
+ALTER TABLE [dbo].[Usuario]  WITH CHECK ADD  CONSTRAINT [FK_Usuario_Documento] FOREIGN KEY([IdDoc])
+REFERENCES [dbo].[Documento] ([IdDoc])
+GO
+ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Usuario_Documento]
+GO
+ALTER TABLE [dbo].[Usuario]  WITH CHECK ADD  CONSTRAINT [FK_Usuario_Genero] FOREIGN KEY([IdGenero])
+REFERENCES [dbo].[Genero] ([IdGenero])
+GO
+ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Usuario_Genero]
+GO
+ALTER TABLE [dbo].[Usuario]  WITH CHECK ADD  CONSTRAINT [FK_Usuario_Programa] FOREIGN KEY([IdPrograma])
+REFERENCES [dbo].[Programa] ([IdPrograma])
+GO
+ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Usuario_Programa]
+GO
+ALTER TABLE [dbo].[Usuario]  WITH CHECK ADD  CONSTRAINT [FK_Usuario_Rol] FOREIGN KEY([IdRol])
+REFERENCES [dbo].[Rol] ([IdRol])
+GO
+ALTER TABLE [dbo].[Usuario] CHECK CONSTRAINT [FK_Usuario_Rol]
+GO
+USE [master]
+GO
+ALTER DATABASE [SGPIDB] SET  READ_WRITE 
+GO
