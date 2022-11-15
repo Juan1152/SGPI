@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "PagosEstudiante";
+    Layout = "_LayoutSGPI";
+}
+
+<div class="container">
+    <nav class="topnavA">
+        <a href="~/Estudiante/ActualizarEstudiante">Actualizar Estudiante</a>
+        <a class="active" href="~/Estudiante/PagosEstudiante">Pagos</a>
+        <button class="btnLogUpE">Cerrar Sesión</button>
+    </nav>
+    <div class="cuacenter">
+        <div class="busT">
+            <div class="cont2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>No. Pago</th>
+                            <th>Valor Pago</th>
+                            <th>Fecha Pago</th>
+                            <th>Comprobante Pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><input type="text"/></td>
+                            <td><input type="file"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="btnsPe">
+                <button href="~/Estudiante/ActualizarEstudiante" class="btnCS">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>

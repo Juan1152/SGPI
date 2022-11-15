@@ -1,0 +1,308 @@
+﻿@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,300,400,700);
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+
+body, html {
+    height: 100%;
+}
+
+body {
+    font-family: "Open Sans";
+    font-weight: 100;
+    display: flex;
+    overflow: hidden;
+}
+
+input ::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input ::-moz-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input :-ms-input-placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+input:focus {
+    outline: 0 transparent solid;
+}
+
+    input:focus ::-webkit-input-placeholder {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    input:focus ::-moz-placeholder {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+    input:focus :-ms-input-placeholder {
+        color: rgba(0, 0, 0, 0.7);
+    }
+
+.login-form {
+    min-height: 10rem;
+    margin: auto;
+    max-width: 100%;
+    padding: 0.5rem;
+    position: relative;
+    left: 350%;
+    top: 30%
+}
+
+.login-text {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 auto;
+    max-width: 50%;
+    padding: 0.5rem;
+    text-align: center;
+}
+
+    .login-text .fa-stack-1x {
+        color: black;
+    }
+
+.login-username, .login-password {
+    background: transparent;
+    border: 0 solid;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    display: block;
+    margin: 1rem;
+    padding: 0.5rem;
+    transition: 250ms background ease-in;
+    width: calc(100% - 3rem);
+}
+
+    .login-username:focus, .login-password:focus {
+        background: white;
+        color: black;
+        transition: 250ms background ease-in;
+    }
+
+.login-forgot-pass {
+    bottom: 0;
+    color: white;
+    cursor: pointer;
+    display: block;
+    font-size: 75%;
+    left: 0;
+    opacity: 0.6;
+    padding: 0.5rem;
+    position: absolute;
+    text-align: center;
+    width: 100%;
+}
+
+    .login-forgot-pass:hover {
+        opacity: 1;
+    }
+
+.login-submit {
+    border: 1px solid white;
+    background: transparent;
+    color: white;
+    display: block;
+    margin: 1rem auto;
+    min-width: 1px;
+    padding: 0.25rem;
+    transition: 250ms background ease-in;
+}
+
+    .login-submit:hover, .login-submit:focus {
+        background: white;
+        color: black;
+        transition: 250ms background ease-in;
+    }
+
+[class*=underlay] {
+    left: 0;
+    min-height: 100%;
+    min-width: 100%;
+    position: fixed;
+    top: 0;
+}
+
+.underlay-photo {
+    -webkit-animation: hue-rotate 6s infinite;
+    animation: hue-rotate 6s infinite;
+    background: url("https://31.media.tumblr.com/41c01e3f366d61793e5a3df70e46b462/tumblr_n4vc8sDHsd1st5lhmo1_1280.jpg");
+    background-size: cover;
+    -webkit-filter: grayscale(30%);
+    z-index: -1;
+}
+
+.underlay-black {
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+}
+
+@-webkit-keyframes hue-rotate {
+    from {
+        -webkit-filter: grayscale(30%) hue-rotate(0deg);
+    }
+
+    to {
+        -webkit-filter: grayscale(30%) hue-rotate(360deg);
+    }
+}
+
+@keyframes hue-rotate {
+    from {
+        -webkit-filter: grayscale(30%) hue-rotate(0deg);
+    }
+
+    to {
+        -webkit-filter: grayscale(30%) hue-rotate(360deg);
+    }
+}
+
+*
+/*-------------------Menu Registro--------------------*/
+/* Añadir un color de fondo negro a la navegación superior */
+.topnav {
+    background-color: #333;
+    overflow: hidden;
+}
+
+/* Estilizar los enlaces dentro de la barra de navegación */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+    /* Cambiar el color de los enlaces al pasar por encima */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    /* anadir color a el nav bar seleccionado */
+    .topnav a.active {
+        background-color: #04AA6D;
+        color: white;
+    }
+
+
+/*------boton crear usuario-----*/
+.crear-submit {
+    border: 1px solid white;
+    background: #04AA6D;
+    color: black;
+    margin: 1rem auto;
+    min-width: 1px;
+    padding: 0.25rem;
+    transition: 250ms background ease-in;
+    border-radius: 20px;
+}
+
+    .crear-submit:hover, .crear-submit:focus {
+        background: white;
+        color: black;
+        transition: 250ms background ease-in;
+    }
+
+/*------boton buscar usuario-----*/
+.buscar-submit {
+    background: #00000000;
+    color: #000000;
+    transition: 250ms background ease-in;
+    position: relative;
+    top: 10px;
+    left: 60px;
+    border-radius: 10px;
+}
+
+    .buscar-submit:hover, .buscar-submit:focus {
+        background: black;
+        color: white;
+        transition: 250ms background ease-in;
+    }
+
+/*------boton modificar usuario-----*/
+.mod-submit {
+    border: 1px solid white;
+    background: #005BFF;
+    color: black;
+    margin: 1rem auto;
+    min-width: 1px;
+    padding: 0.25rem;
+    transition: 250ms background ease-in;
+    border-radius: 20px;
+}
+
+    .mod-submit:hover, .mod-submit:focus {
+        background: white;
+        color: black;
+        transition: 250ms background ease-in;
+    }
+
+/*------boton eliminar usuario-----*/
+.del-submit {
+    border: 1px solid white;
+    background: #FF0000;
+    color: black;
+    margin: 1rem auto;
+    min-width: 1px;
+    padding: 0.25rem;
+    transition: 250ms background ease-in;
+    border-radius: 20px;
+}
+
+    .del-submit:hover, .del-submit:focus {
+        background: white;
+        color: black;
+        transition: 250ms background ease-in;
+    }
+/*------boton cerrar sesion-----*/
+.btnCS {
+    background: #00000000;
+    color: #000000;
+    transition: 250ms background ease-in;
+    position: relative;
+    top: 10px;
+    left: 60px;
+    border-radius: 10px;
+}
+
+    .btnCS:hover, .btnCS:focus {
+        background: black;
+        color: white;
+        transition: 250ms background ease-in;
+    }
+
+.btnLogUpE, .btnLogUpA, .btnLogUpC, .btnLogin {
+    background: #00000000;
+    color: #000000;
+    transition: 250ms background ease-in;
+    position: relative;
+    top: 10px;
+    border-radius: 10px;
+}
+
+    .btnLogUpE:hover, .btnLogUpE:focus, .btnLogUpA:hover, .btnLogUpA:focus, .btnLogUpA:hover, .btnLogUpA:focus, .btnLogin:hover, .btnLogin:focus {
+        background: black;
+        color: white;
+        transition: 250ms background ease-in;
+    }
+
+.btnLogUpE {
+    left: 72%;
+}
+
+.btnLogUpA {
+    left: 58%;
+}
+
+.btnLogUpC {
+    left: 377px;
+}
+
+.btnLogin {
+    left: -3px;
+}

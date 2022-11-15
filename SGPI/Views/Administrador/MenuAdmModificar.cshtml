@@ -1,0 +1,95 @@
+﻿@model SGPI.Models.Usuario
+@{
+    ViewData["Title"] = "MenuAdmModificar";
+    Layout = "_LayoutSGPI";
+}
+
+<div class="container">
+    <nav class="topnavA">
+        <a class="active" href="~/Administrador/MenuRegistro">Crear Usuario</a>
+        <a href="~/Administrador/MenuAdmBuscar">Buscar Usuario</a>
+        <a href="~/Administrador/Reportes">Reportes</a>
+        <button class="btnLogUpA">Cerrar Sesión</button>
+    </nav>
+
+    <form method="post">
+        <div class="cuacenter">
+            <div class="bus">
+                @Html.HiddenFor(model => model.IdUsuario)
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-3">
+                        
+                             @Html.DropDownList("IdDoc", new SelectList(ViewBag.documento , "IdDoc", "TipoDocumento1")
+                        </div>
+                        <div class="col-md-3">
+                            <label for="name">Primer Nombre</label>
+                            <input asp-for="PrimerNombre" type="text" />
+                           
+                        </div>
+                        <div class="col-md-3">
+                            <label for="name">Segundo Nombre</label>
+                            <input asp-for="SegundoNombre" type="text" />
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <label for="priApel">Primer Apellido</label>
+                            <input asp-for="PrimerApellido" type="text" />
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="segApel">Segundo Apellido</label>
+                            <input asp-for="SegundoApellido" type="text" />
+                           
+                        </div>
+                        <div class="col-md-4">
+                            <label for="doc">Número de Documento</label>
+                            <input asp-for="NumeroDocumento" type="text" />
+                            
+                        </div>
+                        <div class="col-md-4">
+                            <label for="email">Correo</label>
+                            <input asp-for="Email" type="email" />
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="roll">Roll Usuario</label>
+                         
+                           @Html.DropDownList("IdRol", new SelectList(ViewBag.rol, "IdRol", "Rol1")
+                        </div>
+                        <div class="col-md-4">
+                            <label for="genero">Genero</label>
+                         
+                             @Html.DropDownList("IdGenero", new SelectList(ViewBag.genero, "IdGenero", "Genero1")
+                        </div>
+                        <div class="col-md-4">
+                            <label for="pass">Contraseña</label>
+                            <input asp-for="Password" type="text" />
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="cont1">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <label for="programa">Programa</label>
+
+                              @Html.DropDownList("IdPrograma", new SelectList(ViewBag.programa, "IdPrograma", "Programa1")
+                        </div>
+                    </div>
+                </div>
+                <div class="btnsC">
+                    <button class="btnCS">Modificar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

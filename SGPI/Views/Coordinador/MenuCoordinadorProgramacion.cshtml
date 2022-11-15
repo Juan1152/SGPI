@@ -1,0 +1,67 @@
+﻿@{
+    ViewData["Title"] = "MenuCoordinadorProgramacion";
+    Layout = "_LayoutSGPI";
+}
+<div class="container">
+    <nav class="topnavA">
+        <a href="~/Coordinador/MenuCoordinadorBuscar">Buscar Estudiante</a>
+        <a class="active" href="~/Coordinador/MenuCoordinadorProgramacion">Programar Asignaturas</a>
+        <a href="~/Coordinador/MenuCoordinadorHomologar">Homologacion</a>
+        <a href="~/Coordinador/MenuCoordinadorEntrevista">Entrevistas y Admisiones</a>
+        <a href="~/Coordinador/MenuCoordinadorPagos">Pagos Estudiantes</a>
+        <a href="~/Coordinador/MenuCoordinadorReportes">Reportes</a>
+        <button class="btnLogUpC">Cerrar Sesión</button>
+    </nav>
+    <div class="cuacenterC">
+        <div class="busT">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="periodo">Periodo Academico</label>
+                    <input type="text" name="periodo" />
+                </div>
+                <div class="col-md-8">
+                    <label for="programa">Programa</label>
+                    <select name="programa" id="programa">
+                        <option value="Especialización en seguridad informatica">Especialización en seguridad informatica</option>
+                        <option value="Maestria en gestión TI">Maestria en gestión TI</option>
+                        <option value="Maestria en medio ambiente">Maestria en medio ambiente</option>
+                    </select>
+                </div>
+            </div>
+            <div class="cont2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Sala o Aula</th>
+                            <th>Asignatura</th>
+                            <th>Codigo</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="btnsPr">
+            <button class="btnCS">Programar</button>
+            <button href="~/Administrador/MenuAdmBuscar" class="btnCS">Volver</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

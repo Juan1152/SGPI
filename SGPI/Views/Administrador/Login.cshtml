@@ -1,0 +1,47 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Login";
+    Layout = "_LayoutSGPI";
+}
+
+
+<div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<form method="post">
+			<div class="card-header">
+
+				<h3>Sistema De Gestion De Posgrados</h3>
+				
+			</div>
+			<div class="card-body">
+				<form>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input asp-for="NumeroDocumento" type="text" class="form-control" placeholder="Usuario">
+						
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input  asp-for= "Password" type="password" class="form-control" placeholder="Contraseña">
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Ingresar" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+			<div class="card-footer">
+				
+				<div class="d-flex justify-content-center">
+						<a href="/Administrador/OlvidarContrasena">Olvidaste Tu Contraseña?</a>
+				</div>
+			</div>
+
+			</form>
+		</div>
+	</div>
+</div>

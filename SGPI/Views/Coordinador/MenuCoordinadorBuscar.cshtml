@@ -1,0 +1,78 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "MenuCoordinadorBuscar";
+    Layout = "_LayoutSGPI";
+}
+<div class="container">
+    <nav class="topnavA">
+        <a class="active" href="~/Coordinador/MenuCoordinadorBuscar">Buscar Estudiante</a>
+        <a href="~/Coordinador/MenuCoordinadorProgramacion">Programar Asignaturas</a>
+        <a href="~/Coordinador/MenuCoordinadorHomologar">Homologacion</a>
+        <a href="~/Coordinador/MenuCoordinadorEntrevista">Entrevistas y Admisiones</a>
+        <a href="~/Coordinador/MenuCoordinadorPagos">Pagos Estudiantes</a>
+        <a href="~/Coordinador/MenuCoordinadorReportes">Reportes</a>
+        <button class="btnLogUpC">Cerrar Sesión</button>
+    </nav>
+    <div class="cuacenterCTb">
+        <div class="busT">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="identificacion">Tipo Identificación</label>
+
+                    <select name="identificacion" id="identificacion">
+                        <option value="Cedula Ciudadania">Cedula Ciudadania</option>
+                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="doc">Número de Documento</label>
+                    <input asp-for="NumeroDocumento" type="text"/>
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" name="buscar" value="Buscar" class="buscar-submit" />
+                </div>
+            </div>
+            <div class="cont2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Pri. Apellido</th>
+                            <th>Seg. Apellido</th>
+                            <th>Tipo Ident.</th>
+                            <th>Num. Documento</th>
+                            <th>Genero</th>
+                            <th>E-mail</th>
+                            <th>Programa</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,69 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "MenuCoordinadorPagos";
+    Layout = "_LayoutSGPI";
+}
+<div class="container">
+    <nav class="topnavA">
+        <a href="~/Coordinador/MenuCoordinadorBuscar">Buscar Estudiante</a>
+        <a href="~/Coordinador/MenuCoordinadorProgramacion">Programar Asignaturas</a>
+        <a href="~/Coordinador/MenuCoordinadorHomologar">Homologacion</a>
+        <a href="~/Coordinador/MenuCoordinadorEntrevista">Entrevistas y Admisiones</a>
+        <a class="active" href="~/Coordinador/MenuCoordinadorPagos">Pagos Estudiantes</a>
+        <a href="~/Coordinador/MenuCoordinadorReportes">Reportes</a>
+        <button class="btnLogUpC">Cerrar Sesión</button>
+    </nav>
+
+    <div class="cuacenterC">
+        <div class="busT">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="identificacion">Tipo Identificación</label>
+
+                    <select name="identificacion" id="identificacion">
+                        <option value="Cedula Ciudadania">Cedula Ciudadania</option>
+                        <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                        <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                        <option value="Pasaporte">Pasaporte</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label for="doc">Número de Documento</label>
+                    <input asp-for="NumeroDocumento" type="text"/>
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" name="buscar" value="Buscar" class="buscar-submit" />
+                </div>
+            </div>
+            <div class="cont2">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Num. Documento</th>
+                            <th>Nombre</th>
+                            <th>Prim. Apellido</th>
+                            <th>Seg. Apellido</th>
+                            <th>Valor Pago</th>
+                            <th>Fecha Pago</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="btnsPa">
+                <button class="btnCS">Ingresar</button>
+                <button href="~/Administrador/MenuAdmBuscar" class="btnCS">Volver</button>
+            </div>
+        </div>
+    </div>
+</div>

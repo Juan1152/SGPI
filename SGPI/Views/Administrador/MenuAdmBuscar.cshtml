@@ -1,0 +1,86 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "MenuAdmBuscar";
+    Layout = "_LayoutSGPI";
+}
+
+
+<div class="container">
+    <nav class="topnavA">
+        <a  href="~/Administrador/MenuRegistro">Crear Usuario</a>
+        <a class="active" href="~/Administrador/MenuAdmBuscar">Buscar Usuario</a>
+        <a href="~/Administrador/Reportes">Reportes</a>
+        <button class="btnLogUpA">Cerrar Sesión</button>
+    </nav>
+
+    <div class="cuacenterTb">
+        <div class="busT">
+            <form method="post">
+            <div class="row">
+                <div class="col-md-4">  
+                    <label for="identificacion">Tipo Identificación</label>
+                
+                    @Html.DropDownList("IdDoc", new SelectList(ViewBag.documento , "IdDoc", "TipoDocumento"));
+                </div>
+                <div class="col-md-4">
+                    <label for="doc">Número de Documento</label>
+                    <input asp-for="NumeroDocumento" type="text"/>
+                </div>
+                <div class="col-md-4">
+                    <input type="submit" name="buscar" value="Buscar" class="buscar-submit" />
+                </div>
+            </div>
+            <div class="cont2">
+
+                @if (Model != null)
+                {
+                    
+                
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>@Html.DisplayNameFor(model=>model.PrimerNombre) </th>
+                            <th>@Html.DisplayNameFor(model=>model.SegundoNombre) </th>
+                            <th>@Html.DisplayNameFor(model=>model.PrimerApellido) </th>
+                            <th>@Html.DisplayNameFor(model=>model.SegundoApellido) </th>
+                            <th>Tipo Ident.</th>
+                            <th>Num. Documento</th>
+                            <th>Genero</th>
+                            <th>E-mail</th>
+                            <th>Programa</th>
+                            <th>Rol</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.PrimerNombre)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.SegundoNombre)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.PrimerApellido)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.SegundoApellido)</td>
+                           
+
+
+                            <td>@Html.DisplayFor(modelItem=>modelItem.NumeroDocumento)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.IdGenero)</td>
+                            <td>@Html.DisplayFor(modelItem=>modelItem.Email)</td>
+                          
+                           
+
+                            <td>@Html.ActionLink("MenuAdmModificar", "MenuAdmModificar", new{IdUsuario=Model.IdUsuario})</td>
+                            <td>@Html.ActionLink("Delete","Delete",new{IdUsuario=Model.IdUsuario},new{onclick="retur confirm('Esta seguro de eliminar');"})</td>
+                        </tr>
+                    </tbody>
+                </table>
+                }
+            </div>
+            
+
+            <div class="btns">
+                <button href="~/Administrador/MenuAdmModificar" class="btnCS">Modificar Usuario</button>
+                <button class="btnCS">Eliminar Usuario</button>
+            </div>
+            </form>
+        </div> 
+       
+    </div>
+</div>

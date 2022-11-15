@@ -1,0 +1,109 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "ActualizarEstudiante";
+    Layout = "_LayoutSGPI";
+}
+
+<div class="container">
+    <nav class="topnavA">
+        <a class="active" href="~/Estudiante/ActualizarEstudiante">Actualizar Estudiante</a>
+        <a href="~/Estudiante/PagosEstudiante">Pagos</a>
+        <button class="btnLogUpE">Cerrar Sesión</button>
+    </nav>
+    <div class="cuacenter">
+        <div class="bus">
+            <div class="cont1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="identificacion">Tipo Identificación</label>
+                        <select name="identificacion" id="identificacion">
+                            <option value="Cedula Ciudadania">Cedula Ciudadania</option>
+                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                            <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="name">Primer Nombre</label>
+                        <input asp-for="PrimerNombre" type="text"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="name">Segundo Nombre</label>
+                        <input asp-for="SegundoNombre" type="text"/>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="priApel">Primer Apellido</label>
+                        <input asp-for="PrimerApellido" type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="cont1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="segApel">Segundo Apellido</label>
+                        <input asp-for="SegundoApellido" type="text"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="doc">Número de Documento</label>
+                        <input asp-for="NumeroDocumento" type="text"/>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="email">Correo</label>
+                        <input asp-for="Email" type="email"/>
+                    </div>
+                </div>
+            </div>
+            <div class="cont1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="roll">Roll Usuario</label>
+                        <select name="roll" id="roll">
+                            <option value="Administrador">Administrador</option>
+                            <option value="Coordinador">Coordinador</option>
+                            <option value="Estudiante">Estudiante</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="genero">Genero</label>
+                        <select name="genero" id="genero">
+                            <option value="Masculino">Masculino</option>
+                            <option value="Femenino">Femenino</option>
+                            <option value="Otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="pass">Contraseña</label>
+                        <input asp-for="Password" type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="cont1">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="programa">Programa</label>
+                        <select name="programa" id="programa">
+                            <option value="Especialización en seguridad informatica">Especialización en seguridad informatica</option>
+                            <option value="Maestria en gestión TI">Maestria en gestión TI</option>
+                            <option value="Maestria en medio ambiente">Maestria en medio ambiente</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="cert">Certificado Electoral</label>
+                        <input type="file" name="cert" />
+                    </div>
+                </div>
+            </div>
+            <div class="btnsAc">
+                <button class="btnCS">Actualizar</button>
+            </div>
+        </div>
+</div>
+
+
+
+</div>
+
+
+
+
+

@@ -1,0 +1,29 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "OlvidarContrasena";
+    Layout = "_LayoutSGPI";
+}
+
+
+<div class="container">
+    <div class="cuacenterO">
+        <form method="post">
+        <div class="formL">
+            <label for="usuario">Usuario</label>
+        </div>
+        <div class="formL">
+            <input asp-for="NumeroDocumento" type="text"/>
+        </div>
+        <div class="formL">
+            <label for="email">Email</label>
+        </div>
+        <div class="formL">
+            <input asp-for="Email" type="text"/>
+        </div>
+        <div class="formL">
+            <button class="btnLogin">Enviar</button>
+            <button type="submit" href="Administrador/Login" class="btnLogin">Volver</button>
+        </div>
+        </form>
+    </div>
+</div>

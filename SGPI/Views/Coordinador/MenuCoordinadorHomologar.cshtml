@@ -1,0 +1,81 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "MenuCoordinadorHomologar";
+    Layout = "_LayoutSGPI";
+}
+
+<div class="container">
+    <nav class="topnavA">
+        <a href="~/Coordinador/MenuCoordinadorBuscar">Buscar Estudiante</a>
+        <a href="~/Coordinador/MenuCoordinadorProgramacion">Programar Asignaturas</a>
+        <a class="active" href="~/Coordinador/MenuCoordinadorHomologar">Homologacion</a>
+        <a href="~/Coordinador/MenuCoordinadorEntrevista">Entrevistas y Admisiones</a>
+        <a href="~/Coordinador/MenuCoordinadorPagos">Pagos Estudiantes</a>
+        <a href="~/Coordinador/MenuCoordinadorReportes">Reportes</a>
+        <button class="btnLogUpC">Cerrar Sesión</button>
+    </nav>
+    <div class="cuacenterC">
+        <div class="bus">
+            <div class="cont1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="identificacion">Tipo Identificación</label>
+                        <select name="identificacion" id="identificacion">
+                            <option value="Cedula Ciudadania">Cedula Ciudadania</option>
+                            <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                            <option value="Cedula de Extranjeria">Cedula de Extranjeria</option>
+                            <option value="Pasaporte">Pasaporte</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="doc">Número de Documento</label>
+                        <input asp-for="NumeroDocumento" type="text"/>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="submit" name="buscar" value="Buscar" class="buscar-submit" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="cont1">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="name">Primer Nombre</label>
+                        <input asp-for="PrimerNombre" type="text" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="name">Segundo Nombre</label>
+                        <input asp-for="SegundoNombre" type="text" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="priApel">Primer Apellido</label>
+                        <input asp-for="PrimerApellido" type="text" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="segApel">Segundo Apellido</label>
+                        <input asp-for="SegundoApellido" type="text" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="cont1">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="prog">Programa</label>
+                        <input type="text"/>
+                    </div>
+                </div>
+            </div>
+            <div class="btnsHo">
+                <button class="btnCS">Homologar</button>
+                <button href="~/Administrador/MenuAdmBuscar" class="btnCS">Volver</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
